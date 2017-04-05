@@ -1,2 +1,2 @@
 # toolScripts
-#### some scripts peronal useing
+#### some scripts peronal using
