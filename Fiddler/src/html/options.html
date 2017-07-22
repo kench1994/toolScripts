@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Fiddler</title>
+<link href="../css/lib.css" type="text/css" rel="stylesheet" />
+<link href="../css/page/options.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+  <div id="fiddler">
+<header id="navbar-example" class="navbar navbar-static">
+  <div class="navbar-inner">
+    <div class="container" style="width: auto;">
+      <a class="brand" href="#">Fiddler</a>
+      <ul class="nav" role="navigation">
+        <li class="dropdown">
+          <a id="filterMenuTitle" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><span>Filter ( All )</span> <b class="caret"></b></a>
+          <ul class="dropdown-menu" id="filterMenu">
+            <li class="disabled"><a href="#" data-type="">All</a></li>
+            <li><a href="#" data-type="main_frame">Documents</a></li>
+            <li><a href="#" data-type="stylesheet">Stylesheets</a></li>
+            <li><a href="#" data-type="script">Scripts</a></li>
+            <li><a href="#" data-type="image">Images</a></li>
+            <li><a href="#" data-type="xmlhttprequest">XHR</a></li>
+            <li><a href="#" data-type="font">Font</a></li>
+            <li><a href="#" data-type="other">Other</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" id="tools" role="button" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" id="toolsMenu" aria-labelledby="tools">
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" href="#" class="clear">Clear</a>
+            </li>
+            <li class="divider"></li>
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" href="#">
+                <label><input type="checkbox" name="diable-cache" id="disabledCacheInput" class="disable-cache" /> 
+                Disable Cache</label>
+              </a>
+            </li>
+            <!--<li class="divider"></li>
+            <li role="presentation" class="dropdown-submenu">
+              <a role="menuitem" tabindex="-1" href="#">User Agent</a>
+              <ul class="dropdown-menu">
+                <li class="disabled"><a tabindex="-1" href="#" data-type="default">Default</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#" data-type="firefox-windows">Firefox Windows</a></li>
+                <li><a tabindex="-1" href="#" data-type="firefox-mac">Firefox Mac</a></li>
+                <li><a tabindex="-1" href="#" data-type="chrome-windows">Chrome Windows</a></li>
+                <li><a tabindex="-1" href="#" data-type="chrome-mac">Chrome Mac</a></li>
+                <li><a tabindex="-1" href="#" data-type="chrome-mobile">Chrome Mobile</a></li>
+                <li><a tabindex="-1" href="#" data-type="chrome-tablet">Chrome Tablet</a></li>
+                <li><a tabindex="-1" href="#" data-type="iphone-ios5">iPhone iOS 5</a></li>
+                <li><a tabindex="-1" href="#" data-type="ipad-ios5">iPad iOS 5</a></li>
+                <li><a tabindex="-1" href="#" data-type="ie9">Internet Explorer 9</a></li>
+                <li><a tabindex="-1" href="#" data-type="ie8">Internet Explorer 8</a></li>
+                <li><a tabindex="-1" href="#" data-type="ie7">Internet Explorer 7</a></li>
+                <li><a tabindex="-1" href="#" data-type="ie6">Internet Explorer 6</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#" data-type="other">Other</a></li>
+              </ul>
+            </li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://github.com/welefen/Fiddler" target="_blank">Fiddler Help</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://github.com/welefen/Fiddler" target="_blank">@Github</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://github.com/welefen/Fiddler/issues" target="_blank">Feedback</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation">
+              <a role="menuitem" data-target="#aboutModal" data-toggle="modal" tabindex="-1" href="#">About
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav pull-right">
+        <li id="fat-menu" class="dropdown">
+          <button class="btn btn-success btn-primary" data-toggle="popover" data-placement="bottom" title="" data-original-title="Popover on top" id="autoResponseBtn">Auto Response</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+
+<div id="requestList">
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th width="40">Type</th>
+      <th width="30">Status</th>
+      <th width="30">Method</th>
+      <th>Url</th>
+      <th width="300">Host</th>
+      <th width="100">Ip</th>
+      <th width="40">Size</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+</div>
+
+<div id="requestDetail">
+  <div class="hd">
+    <i class="icon-remove" class="close"></i>
+    <ul class="nav nav-tabs" id="myTab" style="padding-left:36px;">
+      <li class="active" data-type="headers"><a href="#headers">Headers</a></li>
+      <li data-type="preview"><a href="#preview" >Preview</a></li>
+      <li data-type="response"><a href="#response" >Response</a></li>
+      <li data-type="beautify"><a href="#beautify" >Beautify</a></li>
+    </ul>
+</div>
+   
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab-headers"></div>
+    <div class="tab-pane" id="tab-preview"></div>
+    <div class="tab-pane" id="tab-response"></div>
+    <div class="tab-pane" id="tab-beautify"></div>
+  </div>
+
+ </div>
+
+ <div id="autoResponseList" class="popover bottom fade in">
+  <div class="arrow"></div>
+  <div class="hd">
+     <label><input type="checkbox" checked id="enableAutoResponse" /> Enable Auto Response</label>
+     <button class="btn btn-add">add</button>
+  </div>
+  <div class="rule-list">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="46">Enable</th>
+          <th width="203">If Request Matches...</th>
+          <th width="214">The Response With...</th>
+          <th width="33">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rule-edit">
+    <fieldset>
+      <legend>Rule Editor</legend>
+
+      <div class="rule-edit-item">
+        <span class="name">Pattern:</span> 
+        <input id="rulePatternType" type="text" value="String" readonly="true" class="rule-input rule-pattern-type"><a class="btn btn-select" href="#"><i class="icon-chevron-down"></i></a>
+        <input type="text" class="rule-pattern rule-value" id="rulePattern">
+        <ul class="dropdown-menu" id="patternMenu" role="menu" aria-labelledby="dropdownMenu">
+          <li><a tabindex="-1" href="#" data-type="string" data-value="http://www.example.com/xxx/a.html">String</a></li>
+          <li><a tabindex="-1" href="#" data-type="regexp" data-value="^http:.*\.png$">Regexp</a></li>
+          <li><a tabindex="-1" href="#" data-type="method" data-value="POST">Method</a></li>
+          <li><a tabindex="-1" href="#" data-type="header" data-value="accept=text/html">Header</a></li>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rule-edit-item">
+        <span class="name">Replace:</span> 
+        <input id="ruleReplaceType" type="text" value="File" readonly="true" class="rule-input rule-replace-type"><a class="btn btn-select" href="#"><i class="icon-chevron-down"></i></a>
+        <input id="ruleReplace" type="text" class="rule-replace rule-value" id="patternInput">
+        <ul class="dropdown-menu" id="replaceMenu" role="menu" aria-labelledby="dropdownMenu">
+          <li><a tabindex="-1" href="#" data-type="delay" data-value="100ms">Delay</a></li>
+          <li><a tabindex="-1" href="#" data-type="header" data-value="newHeader=newValue">Header</a></li>
+          <li><a tabindex="-1" href="#" data-type="cancel" data-value="">Cancel</a></li>
+          <li><a tabindex="-1" href="#" data-type="redirect" data-value="http://www.example.com/foo/bar/x.html">Redirect</a></li>
+          <li><a tabindex="-1" href="#" data-type="path" data-value="file:///Users/welefen/xxx/">Path</a></li>
+          <li><a tabindex="-1" href="#" data-type="file" data-value="file:///Users/welefen/a.js">File</a>
+          </li>
+        </ul>
+      </div>
+
+      <button class="btn btn-large btn-primary btn-save" type="button">Save</button>
+    </fieldset>
+  </div>
+
+ </div>
+</div>
+
+<div id="aboutModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">About</h3>
+  </div>
+  <div class="modal-body">
+    <p>Fiddler v1.0.1 - by 
+      <a href="http://www.welefen.com/about" target="_blank">welefen</a>&nbsp;&nbsp;
+      <a href="http://icewhite.us/" target="_blank">IceWhite</a>
+    </p>
+    <p>Thanks For these Apps: </p>
+    <ul>
+        <li><a href="http://twitter.github.io/bootstrap/index.html">Bootstrap</a></li>
+        <li><a href="http://jquery.com/" target="_blank">jQuery</a></li>
+        <li><a href="http://qwrap.com/" target="_blank">Qwrap</a></li>
+        <li><a href="https://github.com/cujojs/when" target="_blank">When.js</a></li>
+        <li><a href="http://jsbeautifier.org/" target="_blank">JS Beautify</a></li>
+        <li><a href="http://alexgorbatchev.com/SyntaxHighlighter/" target="_blank">Syntax Highlighter</a></li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+
+<script id="requestItemTpl" type="text/html">
+<tr class=" {$lowerMethod} {$err}" style="{$display}" data-type="{$type}" data-id="{$requestId}" data-pid="{$parentRequestId}">
+    <td>
+        &nbsp;&nbsp;
+        <img src="{$img}" class="type">
+    </td>
+    <td>{$statusCode}</td>
+    <td>{$method}</td>
+    <td class="url">
+        {$shortPath}
+        <a class="icon-url" title="open on new tab" href="{$url}" target="_blank">
+            <i class="icon-share"></i>
+        </a>
+    </td>
+    <td>{$host}</td>
+    <td>{$ip}</td>
+    <td>{$humanSize}</td>
+</tr>
+</script>
+
+<script id="ruleItemTpl" type="text/html">
+<tr>
+    <td><input type="checkbox" {$checked} name="ruleCheck" class="rule-check" /></td>
+    <td><p class="pattern">{$pattern}</p></td>
+    <td><p class="replace">{$replace}</p></td>
+    <td><i class="icon icon-edit"></i> <i class="icon icon-remove"></i></td>
+</tr>
+</script>
+
+<script id="headersTpl" type="text/html">
+<div class="content">
+  <div class="item"><b>Request URL:</b> {$url}</div>
+  <div class="item"><b>Request Method:</b> {$method}</div>
+  <div class="item"><b>Status Code:</b> <span {if ($statusCode >= 400)}style="color:red"{/if}>{$statusCode}</span></div>
+
+  {if(opts.queryUrl)}
+  <b>Query Url <span class="num">({opts.queryUrlLength})</span></b>
+  <div class="headers-list">
+    {for(var name in opts.queryUrl)}
+      <div class="item"><b>{name}:</b> {opts.queryUrl[name]}</div>
+    {/for}
+  </div>
+  {/if}
+
+  {if(opts.formData)}
+  <b>Form Data <span class="num">({opts.formDataLength})</span></b>
+  <div class="headers-list">
+    {for(var name in opts.formData)}
+      <div class="item"><b>{name}:</b> {=opts.formData[name]}</div>
+    {/for}
+  </div>
+  {/if}
+
+  {if(opts.cookie)}
+  <b class="treeRight">Cookie <span class="num">({opts.cookieLength}) {opts.cookieSize}byte</span></b>
+  <div  class="headers-list" style="display:none">
+    {for(var name in opts.cookie)}
+      <div class="item"><b>{name}:</b> {opts.cookie[name]}</div>
+    {/for}
+  </div>
+  {/if}
+
+  <b>Request Headers <span class="num">({opts.requestHeaders.length})</span></b>
+  <div  class="headers-list">
+    {for(var i=0;i<opts.requestHeaders.length;i++)}
+      <div class="item"><b>{opts.requestHeaders[i].name}:</b> {opts.requestHeaders[i].value}</div>
+    {/for}
+  </div>
+  <b>Response Headers <span class="num">({opts.responseHeaders.length})</span></b>
+  <div  class="headers-list">
+    {for(var i=0;i<opts.responseHeaders.length;i++)}
+      <div class="item"><b>{opts.responseHeaders[i].name}:</b> {opts.responseHeaders[i].value}</div>
+    {/for}
+  </div>
+</div>
+</script>
+
+<script id="imagePreviewTpl" type="text/html">
+<div class="content" >
+<div style="text-align: center">
+  <img src="{$imgUrl}" />
+  {$filename}
+</div>
+<table style="margin-top:20px;width:100%;">
+  <tr><td align="right" width="40%" style="padding-right:10px;"><b>Dimensions</b></td><td  width="60%">{$width} x {$height}</td></tr>
+  <tr><td align="right" style="padding-right:10px;"><b>File size</b></td><td>{$filesize}</td></tr>
+  <tr><td align="right" style="padding-right:10px;"><b>URL</b></td><td><a href="{$url}" target="_blank">{$display_url}</a></td></tr>
+</table>
+</div>
+</script>
+<!--<embed type="application/x-chromefiddler" id="chromefiddler" style="width:1px;height:1px;opacity:0;">-->
+<script src="../js/lib.js"></script>
+<script src="../js/component.js"></script>
+<script src="../js/page/options.js"></script>
+</body>
+</html>
