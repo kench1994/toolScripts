@@ -131,7 +131,7 @@ function getIP() //get ip address
 //日志文件查看
 function get_spider_log($atts) {
     extract(shortcode_atts(array(
-    'text' => 'no'),$atts));
+    'text' => 'yes'),$atts));
     $fh = fopen(site_url() ."/robots-log.txt", "r");
     $contents = "";
         while(!feof($fh)){
