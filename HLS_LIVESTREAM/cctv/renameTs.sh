@@ -17,7 +17,7 @@ do
 		echo rename $files to 0"$files"
 	fi	
 done
-cmd
+#cmd
 #copy /b *.ts new.temp
 #del *.ts
 #ren new.temp new.ts
